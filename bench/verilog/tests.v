@@ -40,16 +40,19 @@
 
 //  CVS Log
 //
-//  $Id: tests.v,v 1.1 2004-05-10 19:23:26 alfoltran Exp $
+//  $Id: tests.v,v 1.2 2004-05-11 18:51:08 alfoltran Exp $
 //
-//  $Date: 2004-05-10 19:23:26 $
-//  $Revision: 1.1 $
+//  $Date: 2004-05-11 18:51:08 $
+//  $Revision: 1.2 $
 //  $Author: alfoltran $
 //  $Locker:  $
 //  $State: Exp $
 //
 // Change History:
 //               $Log: not supported by cvs2svn $
+//               Revision 1.1  2004/05/10 19:23:26  alfoltran
+//               Initial version in OpenCores.org (2004/04/10 - 19:22GMT)
+//
 //               Revision 1.1  2002/09/25 06:10:10  rudi
 //               Added Test Bench
 //
@@ -945,11 +948,15 @@ for(pack_cnt=0;pack_cnt<pack_cnt_max;pack_cnt=pack_cnt+1)
 	   end
 
 	repeat(4)	@(posedge clk);
-	send_token(	my_fa,		// Function Address
-			5,		// Logical Endpoint Number
-			`USBF_T_PID_ACK	// PID
-			);
-	repeat(5)	@(posedge clk);
+
+	if(pack_sz != 0)
+	   begin
+		send_token(	my_fa,		// Function Address
+				5,		// Logical Endpoint Number
+				`USBF_T_PID_ACK	// PID
+				);
+		repeat(5)	@(posedge clk);
+	   end
 
 	// Verify Data
 	for(fc=0;fc<pack_sz;fc=fc+1)
