@@ -1063,10 +1063,12 @@ void in5(void) {
 			for (i = 0; i < 4; i++)
 				wait(clk.posedge_event());
 
-			send_token(my_fa, 5, USBF_T_PID_ACK);
+			if (pack_sz != 0) {
+				send_token(my_fa, 5, USBF_T_PID_ACK);
 
-			for (i = 0; i < 5; i++)
-				wait(clk.posedge_event());
+				for (i = 0; i < 5; i++)
+					wait(clk.posedge_event());
+			}
 
 			// Verify Data
 			for (fc = 0; fc < pack_sz; fc++) {
