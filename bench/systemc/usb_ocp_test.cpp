@@ -734,7 +734,7 @@ void out2(void) {
 				}
 
 				if (buffer1[n + (pl_sz * no_pack)] != s_data.read()) {
-					cout << "ERROR: DATA mismatch. Expected: " << s_data.read() << ", Got: " << buffer1[n + (pl_sz * no_pack)] <<
+					cout << "ERROR: DATA mismatch. Expected: " << buffer1[n + (pl_sz * no_pack)] << ", Got: " << s_data.read() <<
 						" (" << sc_simulation_time() << ")" << endl << endl;
 					error_cnt++;
 				}
@@ -951,7 +951,7 @@ void out4(void) {
 				}
 
 				if (buffer1[n + (pl_sz * no_pack)] != s_data.read()) {
-					cout << "ERROR: DATA mismatch. Expected: " << s_data.read() << ", Got: " << buffer1[n + (pl_sz * no_pack)] <<
+					cout << "ERROR: DATA mismatch. Expected: " << buffer1[n + (pl_sz * no_pack)] << ", Got: " << s_data.read() <<
 						" (" << sc_simulation_time() << ")" << endl << endl;
 					error_cnt++;
 				}
@@ -1172,7 +1172,7 @@ void out6(void) {
 				}
 
 				if (buffer1[n + (pl_sz * no_pack)] != s_data.read()) {
-					cout << "ERROR: DATA mismatch. Expected: " << s_data.read() << ", Got: " << buffer1[n + (pl_sz * no_pack)] <<
+					cout << "ERROR: DATA mismatch. Expected: " << buffer1[n + (pl_sz * no_pack)] << ", Got: " << s_data.read() <<
 						" (" << sc_simulation_time() << ")" << endl << endl;
 					error_cnt++;
 				}
