@@ -40,16 +40,19 @@
 
 //  CVS Log
 //
-//  $Id: tests.v,v 1.2 2004-05-11 18:51:08 alfoltran Exp $
+//  $Id: tests.v,v 1.3 2004-05-28 23:13:16 alfoltran Exp $
 //
-//  $Date: 2004-05-11 18:51:08 $
-//  $Revision: 1.2 $
+//  $Date: 2004-05-28 23:13:16 $
+//  $Revision: 1.3 $
 //  $Author: alfoltran $
 //  $Locker:  $
 //  $State: Exp $
 //
 // Change History:
 //               $Log: not supported by cvs2svn $
+//               Revision 1.2  2004/05/11 18:51:08  alfoltran
+//               Task in5 correction: no ACK for length zero packet.
+//
 //               Revision 1.1  2004/05/10 19:23:26  alfoltran
 //               Initial version in OpenCores.org (2004/04/10 - 19:22GMT)
 //
@@ -579,7 +582,7 @@ for(no_pack=0;no_pack<no_pack_max;no_pack=no_pack+1)	// Send no_pack Out packets
 		if(buffer1[n] !== ep_f_dout)
 		   begin
 			$display("ERROR: DATA mismatch. Expected: %h, Got: %h (%t)",
-				ep_f_dout, buffer1[n], $time);
+				buffer1[n], ep_f_dout, $time);
 			error_cnt = error_cnt + 1;
 		   end
 	
@@ -824,11 +827,12 @@ for(no_pack=0;no_pack<no_pack_max;no_pack=no_pack+1)	// Send no_pack Out packets
 			repeat(2)	@(posedge clk2);
 		   end
 
-		#2;
+		#2;					// Comment this line for XILINX Timed Simulation
+		//@(posedge clk2);	// Comment this line for Standard Simulation
 		if(buffer1[n] !== ep_f_dout)
 		   begin
 			$display("ERROR: DATA mismatch. Expected: %h, Got: %h (%t)",
-				ep_f_dout, buffer1[n], $time);
+				buffer1[n], ep_f_dout, $time);
 			error_cnt = error_cnt + 1;
 		   end
 	
@@ -1078,11 +1082,12 @@ for(no_pack=0;no_pack<no_pack_max;no_pack=no_pack+1)	// Send no_pack Out packets
 			repeat(2)	@(posedge clk2);
 		   end
 
-		#2;
+		#2;					// Comment this line for XILINX Timed Simulation
+		//@(posedge clk2);	// Comment this line for Standard Simulation
 		if(buffer1[n] !== ep_f_dout)
 		   begin
 			$display("ERROR: DATA mismatch. Expected: %h, Got: %h (%t)",
-				ep_f_dout, buffer1[n], $time);
+				buffer1[n], ep_f_dout, $time);
 			error_cnt = error_cnt + 1;
 		   end
 	
